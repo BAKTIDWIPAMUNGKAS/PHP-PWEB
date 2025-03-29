@@ -185,7 +185,7 @@
     <div class="contact-container">
         <div class="contact-form">
             <h3>Kirim Pesan</h3>
-            <form id="contactForm" method="POST" action="https://formspree.io/f/xkgjvbvy">
+            <form id="contactForm" method="POST" action="">
                 <input type="text" id="name" name="name" placeholder="Nama Lengkap" required 
                        pattern="[A-Za-z\s]+" title="Nama lengkap hanya boleh mengandung huruf dan spasi.">
                 <input type="email" id="email" name="email" placeholder="Email Anda" required>
@@ -271,7 +271,28 @@
         import { createClient } from '@supabase/supabase-js'
 
         // Create a single supabase client for interacting with your database
-        const supabase = createClient('https://xyzcompany.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNpdHJ3b3JqYWV5eGpkYWR3aWtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDMxMDI3OTIsImV4cCI6MjA1ODY3ODc5Mn0.xAio3bd_dHa6ex795OFo2pHuW1Vx0gjkPIVRwguBfyc')
+        const {createClient} = supabase
+        supabase = createClient('https://xyzcompany.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNpdHJ3b3JqYWV5eGpkYWR3aWtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDMxMDI3OTIsImV4cCI6MjA1ODY3ODc5Mn0.xAio3bd_dHa6ex795OFo2pHuW1Vx0gjkPIVRwguBfyc')
+
+        const form = document.querySelector('contactForm')
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault()
+
+            const formInputs = form.querySelectorAll('input, select, textarea')
+            
+            let submision = {}
+
+            formInputs.forEach(element => {
+                const { value, name } = element
+                if (value) {
+                    submision[name] = value
+                }
+            })
+
+            const { error, data } = await supabase.from('entries').insert([submision])
+
+            console.log({error, data})
+        })
     </script>    
 </body>
 </html>

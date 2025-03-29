@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Inisialisasi Supabase
     const supabaseUrl = 'https://citrworjaeyxjdadwiko.supabase.co';
     const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNpdHJ3b3JqYWV5eGpkYWR3aWtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDMxMDI3OTIsImV4cCI6MjA1ODY3ODc5Mn0.xAio3bd_dHa6ex795OFo2pHuW1Vx0gjkPIVRwguBfyc';
-    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+    const supabase = supabase.createClient('https://citrworjaeyxjdadwiko.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNpdHJ3b3JqYWV5eGpkYWR3aWtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDMxMDI3OTIsImV4cCI6MjA1ODY3ODc5Mn0.xAio3bd_dHa6ex795OFo2pHuW1Vx0gjkPIVRwguBfyc');
 
     // Tangani submit formulir
     const contactForm = document.getElementById('contactForm');
